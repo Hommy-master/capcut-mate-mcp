@@ -1,9 +1,9 @@
 services:
   capcut-mate:
-    image: gogoshine/capcut-mate:latest
-    #image: gogoshine/capcut-mate:sha-190a61f
+    image: gogoshine/capcut-mate-mcp:latest
+    #image: gogoshine/capcut-mate-mcp:sha-190a61f
     ports:
-      - "60000:60000"  # 将主机的 60000 端口映射到容器内部的 60000 端口
+      - "60001:60000"  # 将主机的 60001 端口映射到容器内部的 60000 端口
     volumes:
       - /opt/1panel/apps/openresty/openresty/www/sites/cm.jcaigc.cn/index/output:/app/output  # 挂载配置文件目录
       - /etc/localtime:/etc/localtime:ro  # 挂载主机时区
@@ -16,7 +16,7 @@ services:
       # - 1.1.1.1   # Cloudflare DNS (备选)
     environment:
       # 生成资源的下载地址
-      - URL=https://assets.jcaigc.cn
+      - URL=https://cm.jcaigc.cn
     mem_limit: 1G     # 内存限制
     memswap_limit: 2G # 总内存（物理内存 + Swap）限制
     cpus: '1.6'       # CPU使用率限制为150%，即容器最多可以使用1.5个完整的CPU核心

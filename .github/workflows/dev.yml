@@ -62,7 +62,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/capcut-mate  # 统一使用DOCKERHUB_USERNAME（无下划线）
+            ${{ secrets.DOCKERHUB_USERNAME }}/capcut-mate-mcp  # 统一使用DOCKERHUB_USERNAME（无下划线）
           tags: |
             type=ref,event=branch
             type=ref,event=tag
@@ -74,8 +74,8 @@ jobs:
         run: |
           echo "生成的标签: ${{ steps.meta.outputs.tags }}"
           # 检查标签是否包含正确的用户名格式
-          if [[ ! "${{ steps.meta.outputs.tags }}" == *"${{ secrets.DOCKERHUB_USERNAME }}/capcut-mate:"* ]]; then
-            echo "错误：标签格式不正确，应为 ${secrets.DOCKERHUB_USERNAME}/capcut-mate:标签"
+          if [[ ! "${{ steps.meta.outputs.tags }}" == *"${{ secrets.DOCKERHUB_USERNAME }}/capcut-mate-mcp:"* ]]; then
+            echo "错误：标签格式不正确，应为 ${secrets.DOCKERHUB_USERNAME}/capcut-mate-mcp:标签"
             exit 1
           fi
 
